@@ -1,17 +1,14 @@
 import "../styleSheets/App.scss";
 import { Route, Switch } from "react-router-dom";
+import Landing from "./Landing";
+import MainPage from "./MainPage";
 
 function App() {
   return (
-    <>
-      <div className="App">Hola mundo</div>;
-      {/* <main>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/about" component={About} />
-        </Switch>
-      </main> */}
-    </>
+    <Switch>
+      <Route exact path="/" component={Landing} />
+      <Route path="/MainPage" component={MainPage} />
+    </Switch>
   );
 }
 
