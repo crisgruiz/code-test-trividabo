@@ -1,8 +1,11 @@
-const getDataFromApi = () => {
-  const random = Math.floor(Math.random() * 100);
-  return fetch(`http://numbersapi.com/${random}/trivia`).then((response) =>
-    response.text()
+const randomNum = () => {
+  return Math.floor(Math.random() * 100);
+};
+
+const getDataFromApi = (a) => {
+  return fetch(`http://numbersapi.com/${a || randomNum()}/trivia`).then(
+    (response) => response.text()
   );
 };
 
-export default getDataFromApi;
+export { randomNum, getDataFromApi };
