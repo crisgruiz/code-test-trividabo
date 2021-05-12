@@ -4,8 +4,9 @@ const Questions = (props) => {
     let randomNumber = Math.floor(Math.random() * 100);
     answers.push(randomNumber);
   }
+  answers[0] = props.correctAnswer;
+  answers.sort();
   console.log(answers);
-
   const answerList = answers.map((answer, id) => {
     return (
       <li key={id} className="RespondList__answer">

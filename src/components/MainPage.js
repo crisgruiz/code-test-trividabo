@@ -13,6 +13,7 @@ const MainPage = () => {
 
   let originalQuestion = questions.split(" ");
   console.log(originalQuestion);
+  let correctAnswer = originalQuestion[0];
   let orderedQuestion = originalQuestion;
   orderedQuestion[0] = "What";
   let finalQuestion = orderedQuestion.join(" ");
@@ -21,7 +22,7 @@ const MainPage = () => {
     <>
       <h1>Trividabo</h1>
       <h2>Question 1 of 10</h2>
-      <Questions finalQuestion={finalQuestion} />
+      <Questions finalQuestion={finalQuestion} correctAnswer={correctAnswer} />
     </>
   );
 };
