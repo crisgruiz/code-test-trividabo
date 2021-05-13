@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import Questions from "./Questions";
-import FinalAnswers from "./FinalAnswers";
+import FinalGame from "./FinalGame";
 
 const MainPage = () => {
   const [trivia, setTrivia] = useState({ choices: [] });
@@ -21,12 +21,15 @@ const MainPage = () => {
   console.log(userAnswer);
 
   const handleCount = () => {
-    setCount(count + 1);
     console.log("Contando");
+    if (count === 10) {
+      setCount(1);
+    } else {
+      setCount(count + 1);
+    }
   };
 
   const handleSkip = () => {
-    console.log("Me han borrado");
     generateQuestionWithAnswers().then((data) => setTrivia(data));
     handleCount();
   };
@@ -49,7 +52,7 @@ const MainPage = () => {
         saveUserAnswer={saveUserAnswer}
         handleConfirmAnswer={handleConfirmAnswer}
       />
-      <FinalAnswers correctAnswer={trivia.number} userAnswer={userAnswer} />
+      <FinalGame />
     </>
   );
 };

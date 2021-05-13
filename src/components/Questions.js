@@ -4,15 +4,17 @@ const Questions = (props) => {
   const answerList = props.answers.map((answer, id) => {
     return (
       <div key={id}>
-        <li
-          key={id}
-          id={answer}
-          className="respondList__answer"
-          onClick={props.saveUserAnswer}
-        >
-          <i className="fas fa-circle"></i>
-          <p className="respondList__answer--element">{answer}</p>
-        </li>
+        <label>
+          <input
+            type="radio"
+            id={answer}
+            value={answer}
+            name="options"
+            className="respondList__answer"
+            onClick={props.saveUserAnswer}
+          ></input>
+          {answer}
+        </label>
       </div>
     );
   });
@@ -21,7 +23,7 @@ const Questions = (props) => {
     <>
       <div className="question">
         <h3 className="question__text">{props.question}</h3>
-        {<ul className="respondList">{answerList}</ul>}
+        {<form className="respondList">{answerList}</form>}
       </div>
       <div className="buttons">
         <button
