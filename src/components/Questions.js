@@ -24,7 +24,11 @@ const Questions = (props) => {
         {<ul className="respondList">{answerList}</ul>}
       </div>
       <div className="buttons">
-        <button className="buttons__confirm" type="button">
+        <button
+          className="buttons__confirm"
+          type="button"
+          onClick={props.handleConfirmAnswer}
+        >
           Confirm
         </button>
         <button

@@ -9,20 +9,15 @@ const MainPage = () => {
   const [userAnswer, setUserAnswer] = useState([]);
   const [count, setCount] = useState(1);
 
-  //Llamada a los datos de la API
+  //Call to API data
   useEffect(() => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   }, []);
 
-  let triviaData = trivia;
-  console.log(trivia);
-
   const saveUserAnswer = (e) => {
     const selectedItem = parseInt(e.currentTarget.id);
     setUserAnswer(selectedItem);
-    console.log("hola");
   };
-
   console.log(userAnswer);
 
   const handleCount = () => {
@@ -36,18 +31,25 @@ const MainPage = () => {
     handleCount();
   };
 
+  const handleConfirmAnswer = () => {
+    console.log("Me han elegido como respuesta");
+    generateQuestionWithAnswers().then((data) => setTrivia(data));
+    handleCount();
+  };
+
   return (
     <>
       <h1>Trividabo</h1>
       <h2>Question {count} of 10</h2>
       <Questions
-        question={triviaData.text}
-        answers={triviaData.choices}
-        correctAnswer={triviaData.number}
+        question={trivia.text}
+        answers={trivia.choices}
+        correctAnswer={trivia.number}
         handleSkip={handleSkip}
         saveUserAnswer={saveUserAnswer}
+        handleConfirmAnswer={handleConfirmAnswer}
       />
-      <FinalAnswers correctAnswer={triviaData.number} userAnswer={userAnswer} />
+      <FinalAnswers correctAnswer={trivia.number} userAnswer={userAnswer} />
     </>
   );
 };
