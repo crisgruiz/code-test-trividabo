@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
-import {
-  generateQuestionWithAnswers,
-  generateAnswers,
-} from "../services/getDataFromApi";
+import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import Questions from "./Questions";
+import FinalAnswers from "./FinalAnswers";
 
 const MainPage = () => {
   const [trivia, setTrivia] = useState({ choices: [] });
-  // const [userAnswer, setUserAnswer] = useState();
+  const [userAnswer, setUserAnswer] = useState([]);
 
   //Llamada a los datos de la API
   useEffect(() => {
@@ -17,15 +15,14 @@ const MainPage = () => {
 
   let triviaData = trivia;
   console.log(trivia);
-  // const saveUserAnswer = (e) => {
-  //   const selectedItem = parseInt(e.currentTarget.id);
-  //   if (selectedItem === parseInt(correctAnswer)) {
-  //     console.log("hola");
-  //   } else {
-  //     console.log("Nan");
-  //   }
-  // };
 
+  const saveUserAnswer = (e) => {
+    const selectedItem = parseInt(e.currentTarget.id);
+    setUserAnswer(selectedItem);
+    console.log("hola");
+  };
+
+  console.log(userAnswer);
   const handleSkip = () => {
     console.log("hello");
     generateQuestionWithAnswers().then((data) => setTrivia(data));
@@ -39,7 +36,9 @@ const MainPage = () => {
         answers={triviaData.choices}
         correctAnswer={triviaData.number}
         handleSkip={handleSkip}
+        saveUserAnswer={saveUserAnswer}
       />
+      <FinalAnswers correctAnswer={triviaData.number} userAnswer={userAnswer} />
     </>
   );
 };

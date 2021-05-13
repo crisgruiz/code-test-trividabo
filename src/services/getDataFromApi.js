@@ -62,10 +62,8 @@ const generateQuestionWithAnswers = () => {
 export {
   randomNum,
   getDataFromApi,
-  getDataFromApiFor100NUmbers,
   generateAnswers,
   generateQuestion,
-  getDataFromApi10Numbers,
   generateQuestionWithAnswers,
 };
 // export default getDataFromApiFor100NUmbers;

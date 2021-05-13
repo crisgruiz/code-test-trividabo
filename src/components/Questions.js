@@ -4,13 +4,19 @@ const Questions = (props) => {
   const answerList = props.answers.map((answer, id) => {
     return (
       <div key={id}>
-        <li key={id} id={answer} className="respondList__answer">
+        <li
+          key={id}
+          id={answer}
+          className="respondList__answer"
+          onClick={props.saveUserAnswer}
+        >
           <i className="fas fa-circle"></i>
           <p className="respondList__answer--element">{answer}</p>
         </li>
       </div>
     );
   });
+
   return (
     <>
       <div className="question">
