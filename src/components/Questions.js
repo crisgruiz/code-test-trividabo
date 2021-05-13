@@ -4,12 +4,7 @@ const Questions = (props) => {
   const answerList = props.answers.map((answer, id) => {
     return (
       <div key={id}>
-        <li
-          key={id}
-          // id={props.answer}
-          className="respondList__answer"
-          // onClick={props.saveUserAnswer}
-        >
+        <li key={id} id={answer} className="respondList__answer">
           <i className="fas fa-circle"></i>
           <p className="respondList__answer--element">{answer}</p>
         </li>
@@ -23,10 +18,7 @@ const Questions = (props) => {
         {<ul className="respondList">{answerList}</ul>}
       </div>
       <div className="buttons">
-        <button
-          className="buttons__confirm"
-          type="button" /*onClick={props.handleBtn}*/
-        >
+        <button className="buttons__confirm" type="button">
           Confirm
         </button>
         <button
