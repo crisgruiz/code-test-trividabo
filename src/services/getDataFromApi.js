@@ -14,17 +14,17 @@ for (let i = 0; i < 10; i++) {
   questionsArr.push(randomNumber);
 }
 
-const getDataFromApi10Numbers = () => {
-  return fetch(
-    `http://numbersapi.com/${questionsArr[0]},${questionsArr[1]},${questionsArr[2]},${questionsArr[3]},${questionsArr[4]},${questionsArr[5]},${questionsArr[6]},${questionsArr[7]},${questionsArr[8]},${questionsArr[9]}/trivia?json`
-  ).then((response) => response.json());
-};
+// const getDataFromApi10Numbers = () => {
+//   return fetch(
+//     `http://numbersapi.com/${questionsArr[0]},${questionsArr[1]},${questionsArr[2]},${questionsArr[3]},${questionsArr[4]},${questionsArr[5]},${questionsArr[6]},${questionsArr[7]},${questionsArr[8]},${questionsArr[9]}/trivia?json`
+//   ).then((response) => response.json());
+// };
 
-const getDataFromApiFor100NUmbers = () => {
-  return fetch(`http://numbersapi.com/1..100}/trivia?json`).then((response) =>
-    response.json()
-  );
-};
+// const getDataFromApiFor100NUmbers = () => {
+//   return fetch(`http://numbersapi.com/1..100}/trivia?json`).then((response) =>
+//     response.json()
+//   );
+// };
 
 const generateAnswers = (correctOption) => {
   const arr = [correctOption];
