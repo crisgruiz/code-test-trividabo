@@ -4,21 +4,31 @@ const Questions = (props) => {
     let randomNumber = Math.floor(Math.random() * 100);
     answers.push(randomNumber);
   }
-  answers[0] = props.correctAnswer;
-  answers.sort();
+  // let correctAnswer = props.correctAnswer;
+  // answers[0] = parseInt(correctAnswer);
+  // answers.sort();
   console.log(answers);
+  // console.log(props.correctAnswer);
   const answerList = answers.map((answer, id) => {
     return (
-      <li key={id} className="RespondList__answer">
-        {answer}
-      </li>
+      <div key={id}>
+        <li
+          key={id}
+          // id={props.correctAnswer}
+          className="respondList__answer"
+          // onClick={props.saveUserAnswer}
+        >
+          <i className="fas fa-circle"></i>
+          <p className="respondList__answer--element">{answer}</p>
+        </li>
+      </div>
     );
   });
   return (
     <>
       <div className="question">
         <h3 className="question__text"> {props.finalQuestion}</h3>
-        <ul className="RespondList">{answerList}</ul>
+        <ul className="respondList">{answerList}</ul>
       </div>
       <div className="buttons">
         <button
@@ -29,7 +39,8 @@ const Questions = (props) => {
         </button>
         <button
           className="buttons__skip"
-          type="button" /*onClick={props.handleSkip}*/
+          type="button"
+          onClick={props.handleSkip}
         >
           Skip
         </button>
