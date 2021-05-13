@@ -7,6 +7,7 @@ import FinalAnswers from "./FinalAnswers";
 const MainPage = () => {
   const [trivia, setTrivia] = useState({ choices: [] });
   const [userAnswer, setUserAnswer] = useState([]);
+  const [count, setCount] = useState(1);
 
   //Llamada a los datos de la API
   useEffect(() => {
@@ -23,14 +24,22 @@ const MainPage = () => {
   };
 
   console.log(userAnswer);
-  const handleSkip = () => {
-    console.log("hello");
-    generateQuestionWithAnswers().then((data) => setTrivia(data));
+
+  const handleCount = () => {
+    setCount(count + 1);
+    console.log("Contando");
   };
+
+  const handleSkip = () => {
+    console.log("Me han borrado");
+    generateQuestionWithAnswers().then((data) => setTrivia(data));
+    handleCount();
+  };
+
   return (
     <>
       <h1>Trividabo</h1>
-      <h2>Question 1 of 10</h2>
+      <h2>Question {count} of 10</h2>
       <Questions
         question={triviaData.text}
         answers={triviaData.choices}
