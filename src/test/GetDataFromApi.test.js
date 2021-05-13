@@ -2,25 +2,9 @@ import {
   randomNum,
   getDataFromApi,
   generateAnswers,
+  generateQuestion,
+  generateQuestionWithAnswers,
 } from "../services/getDataFromApi.js";
-
-// test("the fetch success with 2", () => {
-//   return getDataFromApi(2).then((data) => {
-//     expect(data).toMatch(new RegExp(/^2 is /));
-//   });
-// });
-
-// test("the fetch success without passing a number", () => {
-//   return getDataFromApi().then((data) => {
-//     expect(data).toMatch(new RegExp(/^\d+ is /));
-//   });
-// });
-
-// test("the fetch function always retrieves a number as first word", () => {
-//   return getDataFromApi().then((data) => {
-//     expect(parseInt(data.split(" ")[0])).toBeLessThanOrEqual(99);
-//   });
-// });
 
 test("the fetch function always retrieves a json", () => {
   return getDataFromApi(59).then((data) => {
@@ -39,6 +23,20 @@ test("the fetch success without passing a number", () => {
 test("Generate answers returns an array with four options", () => {
   expect(generateAnswers(5)).toHaveLength(4);
   expect(generateAnswers(5)).toContain(5);
+});
+
+test("Generate question with answers", () => {
+  generateQuestionWithAnswers().then((qa) => {
+    expect(qa).toHaveLength(3);
+    expect(qa).toContain("text");
+    expect(qa).toContain("number");
+    expect(qa).toContain("choices");
+  });
+});
+
+test("Given a quaetion return number and qestion", () => {
+  const q = generateQuestion("22 is the number of the day I was born.");
+  expect(q).toBe("What is the number of the day I was born?");
 });
 
 test("randomNum produces numbers between 0 and 99", () => {
