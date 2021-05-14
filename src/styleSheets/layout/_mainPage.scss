@@ -1,15 +1,16 @@
 @import "../core/core";
-
+body {
+  height: 100vh;
+  background-color: $background;
+  width: 100%;
+}
 .mainPage {
   @include normal-text() {
   }
-  background-color: $background;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  width: 100%;
   color: $mainText;
   padding: 25px 25px;
   &__title {

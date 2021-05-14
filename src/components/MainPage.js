@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import Questions from "./Questions";
-import ProgressBar from "./ProgressBar";
+import FinalGame from "./FinalGame";
 
 const MainPage = () => {
   const [trivia, setTrivia] = useState({ choices: [] });
@@ -22,11 +22,7 @@ const MainPage = () => {
   };
 
   const handleCount = () => {
-    if (count > 10) {
-      setCount(1);
-    } else {
-      setCount(count + 1);
-    }
+    setCount(count + 1);
   };
 
   const handleReset = () => {
@@ -40,20 +36,60 @@ const MainPage = () => {
   };
 
   const handleNextQuestion = () => {
+    handleAnswersList();
+    handleCount();
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   };
 
-  const handleSkip = () => {
-    handleAnswersList();
-    handleCount();
-    handleNextQuestion();
+  const handleResults = () => {
+    return answersList.map((answers, id) => {
+      if (answers.number == userAnswer) {
+        return (
+          <>
+            <div className="line"></div>
+            <div key={id}>
+              <p>{answers.text}</p>
+              <p>{answers.number}</p>
+            </div>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <div className="line"></div>
+            <div key={id}>
+              <p>{answers.text}</p>
+              <p>Right answer was {answers.number}</p>
+            </div>
+          </>
+        );
+      }
+    });
   };
 
-  const handleConfirmAnswer = () => {
-    if (userAnswer) {
-      handleAnswersList();
-      handleCount();
-      handleNextQuestion();
+  const showThings = () => {
+    if (answersList.length === 10) {
+      return (
+        <FinalGame
+          answersList={answersList}
+          handleReset={handleReset}
+          handleResults={handleResults}
+        />
+      );
+    } else {
+      return (
+        <Questions
+          question={trivia.text}
+          answers={trivia.choices}
+          correctAnswer={trivia.number}
+          handleNextQuestion={handleNextQuestion}
+          saveUserAnswer={saveUserAnswer}
+          userAnswer={userAnswer}
+          count={count}
+          answersList={answersList}
+          handleResults={handleResults}
+        />
+      );
     }
   };
 
@@ -63,19 +99,7 @@ const MainPage = () => {
     <>
       <main className="mainPage">
         <h1 className="mainPage__title">Trividabo</h1>
-        <p className="mainPage__count">Question {count} of 10</p>
-        <Questions
-          question={trivia.text}
-          answers={trivia.choices}
-          correctAnswer={trivia.number}
-          handleSkip={handleSkip}
-          saveUserAnswer={saveUserAnswer}
-          userAnswer={userAnswer}
-          handleConfirmAnswer={handleConfirmAnswer}
-          count={count}
-          answersList={answersList}
-          handleReset={handleReset}
-        />
+        <div>{showThings()}</div>
       </main>
     </>
   );

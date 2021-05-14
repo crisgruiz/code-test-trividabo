@@ -1,4 +1,3 @@
-import FinalGame from "./FinalGame";
 import "../styleSheets/layout/_questions.scss";
 
 const Questions = (props) => {
@@ -21,36 +20,19 @@ const Questions = (props) => {
     );
   });
 
-  const handleEndOfGame = () => {
-    if (props.count === 10) {
-      return <FinalGame handleReset={props.handleReset} />;
-    }
+  const handleSkip = () => {
+    props.handleNextQuestion();
   };
 
-  const handleResults = () => {
-    return props.answersList.map((answers) => {
-      if (answers.number == props.userAnswer) {
-        return (
-          <>
-            <div className="line"></div>
-            <p>{answers.text}</p>
-            <p>{answers.number}</p>
-          </>
-        );
-      } else {
-        return (
-          <>
-            <div className="line"></div>
-            <p>{answers.text}</p>
-            <p>Right answer was {answers.number}</p>
-          </>
-        );
-      }
-    });
+  const handleConfirmAnswer = () => {
+    if (props.userAnswer) {
+      props.handleNextQuestion();
+    }
   };
 
   return (
     <>
+      <p className="mainPage__count">Question {props.count} of 10</p>
       <div className="question">
         <p className="question__text">{props.question}</p>
         <form className="respondList">{generateAnswerList}</form>
@@ -59,20 +41,15 @@ const Questions = (props) => {
         <button
           className="buttons__confirm"
           type="button"
-          onClick={props.handleConfirmAnswer}
+          onClick={handleConfirmAnswer}
         >
           Confirm
         </button>
-        <button
-          className="buttons__skip"
-          type="button"
-          onClick={props.handleSkip}
-        >
+        <button className="buttons__skip" type="button" onClick={handleSkip}>
           Skip
         </button>
       </div>
-      <div className="resultList">{handleResults()}</div>
-      <div className="playAgain">{handleEndOfGame()}</div>
+      <div className="resultList">{props.handleResults()}</div>
     </>
   );
 };
