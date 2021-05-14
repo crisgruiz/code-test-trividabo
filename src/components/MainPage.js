@@ -14,8 +14,10 @@ const MainPage = () => {
   useEffect(() => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   }, []);
+
   console.log(trivia.text);
   console.log(trivia.number);
+
   const saveUserAnswer = (e) => {
     const selectedItem = parseInt(e.currentTarget.id);
     setUserAnswer(selectedItem);
@@ -41,6 +43,16 @@ const MainPage = () => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   };
 
+  const handleConfirmAnswer = () => {
+    if (userAnswer) {
+      handleNextQuestion();
+    }
+  };
+
+  const handleSkip = () => {
+    handleNextQuestion();
+  };
+
   const handleResults = () => {
     return answersList.map((answers, id) => {
       if (answers.number == userAnswer) {
@@ -49,7 +61,10 @@ const MainPage = () => {
             <div className="line"></div>
             <div key={id}>
               <p>{answers.text}</p>
-              <p>{answers.number}</p>
+              <div className="answer">
+                <i className="fas fa-check-circle answer__icon"></i>
+                <p className="answer__number">{answers.number}</p>
+              </div>
             </div>
           </>
         );
@@ -59,7 +74,13 @@ const MainPage = () => {
             <div className="line"></div>
             <div key={id}>
               <p>{answers.text}</p>
-              <p>Right answer was {answers.number}</p>
+              <div className="answer">
+                <i className="fas fa-times-circle answer__icon"></i>
+                <p className="answer__skip">Skipped</p>
+                <p className="answer__number">
+                  - Right answer was {answers.number}
+                </p>
+              </div>
             </div>
           </>
         );
@@ -85,6 +106,8 @@ const MainPage = () => {
           saveUserAnswer={saveUserAnswer}
           count={count}
           handleResults={handleResults}
+          handleConfirmAnswer={handleConfirmAnswer}
+          handleSkip={handleSkip}
         />
       );
     }
@@ -94,9 +117,9 @@ const MainPage = () => {
 
   return (
     <>
-      <main className="mainPage">
-        <h1 className="mainPage__title">Trividabo</h1>
-        <div>{showThings()}</div>
+      <main>
+        <h1 className="title">Trividabo</h1>
+        <div className="mainPage">{showThings()}</div>
       </main>
     </>
   );

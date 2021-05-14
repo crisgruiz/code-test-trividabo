@@ -20,16 +20,6 @@ const Questions = (props) => {
     );
   });
 
-  const handleSkip = () => {
-    props.handleNextQuestion();
-  };
-
-  const handleConfirmAnswer = () => {
-    if (props.userAnswer) {
-      props.handleNextQuestion();
-    }
-  };
-
   return (
     <>
       <p className="mainPage__count">Question {props.count} of 10</p>
@@ -41,11 +31,15 @@ const Questions = (props) => {
         <button
           className="buttons__confirm"
           type="button"
-          onClick={handleConfirmAnswer}
+          onClick={props.handleConfirmAnswer}
         >
           Confirm
         </button>
-        <button className="buttons__skip" type="button" onClick={handleSkip}>
+        <button
+          className="buttons__skip"
+          type="button"
+          onClick={props.handleSkip}
+        >
           Skip
         </button>
       </div>
