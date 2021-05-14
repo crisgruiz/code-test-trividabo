@@ -1,8 +1,17 @@
 @import "../core/core";
 
+.question {
+  @include normal-text() {
+  }
+  &__text {
+    margin-bottom: 40px;
+  }
+}
+
 .answersList {
   @include normal-text() {
   }
+  width: 100%;
   &__answer {
     display: flex;
     flex-direction: row;
@@ -20,4 +29,42 @@
       outline: none;
     }
   }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  margin: 50px 0;
+  padding: 0 150px;
+  &__confirm {
+    width: 250px;
+    height: 50px;
+    background-color: $confirmBtn;
+    color: $btnText;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-right: 50px;
+  }
+  &__skip {
+    width: 250px;
+    height: 50px;
+    background-color: $skipBtn;
+    color: $btnText;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+}
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $lineColor;
+  margin-bottom: 25px;
 }

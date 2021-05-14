@@ -32,6 +32,7 @@ const Questions = (props) => {
       if (answers.number == props.userAnswer) {
         return (
           <>
+            <div className="line"></div>
             <p>{answers.text}</p>
             <p>{answers.number}</p>
           </>
@@ -39,6 +40,7 @@ const Questions = (props) => {
       } else {
         return (
           <>
+            <div className="line"></div>
             <p>{answers.text}</p>
             <p>Right answer was {answers.number}</p>
           </>
@@ -50,8 +52,8 @@ const Questions = (props) => {
   return (
     <>
       <div className="question">
-        <h3 className="question__text">{props.question}</h3>
-        {<form className="respondList">{generateAnswerList}</form>}
+        <p className="question__text">{props.question}</p>
+        <form className="respondList">{generateAnswerList}</form>
       </div>
       <div className="buttons">
         <button

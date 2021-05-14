@@ -61,20 +61,22 @@ const MainPage = () => {
 
   return (
     <>
-      <h1>Trividabo</h1>
-      <h2>Question {count} of 10</h2>
-      <Questions
-        question={trivia.text}
-        answers={trivia.choices}
-        correctAnswer={trivia.number}
-        handleSkip={handleSkip}
-        saveUserAnswer={saveUserAnswer}
-        userAnswer={userAnswer}
-        handleConfirmAnswer={handleConfirmAnswer}
-        count={count}
-        answersList={answersList}
-        handleReset={handleReset}
-      />
+      <main className="mainPage">
+        <h1 className="mainPage__title">Trividabo</h1>
+        <p className="mainPage__count">Question {count} of 10</p>
+        <Questions
+          question={trivia.text}
+          answers={trivia.choices}
+          correctAnswer={trivia.number}
+          handleSkip={handleSkip}
+          saveUserAnswer={saveUserAnswer}
+          userAnswer={userAnswer}
+          handleConfirmAnswer={handleConfirmAnswer}
+          count={count}
+          answersList={answersList}
+          handleReset={handleReset}
+        />
+      </main>
     </>
   );
 };
