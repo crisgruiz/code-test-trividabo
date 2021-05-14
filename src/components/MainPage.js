@@ -81,12 +81,9 @@ const MainPage = () => {
         <Questions
           question={trivia.text}
           answers={trivia.choices}
-          correctAnswer={trivia.number}
           handleNextQuestion={handleNextQuestion}
           saveUserAnswer={saveUserAnswer}
-          userAnswer={userAnswer}
           count={count}
-          answersList={answersList}
           handleResults={handleResults}
         />
       );
