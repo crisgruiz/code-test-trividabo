@@ -1,8 +1,8 @@
-const FinalGame = (props) => {
+const FinalGame = () => {
   return (
     <>
       <button
-        className="buttons__playAgain"
+        className="playAgain__btn"
         type="button"
         // onClick={props.handleSkip}
       >

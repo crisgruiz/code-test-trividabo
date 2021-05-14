@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import Questions from "./Questions";
-import FinalGame from "./FinalGame";
+import ProgressBar from "./ProgressBar";
 
 const MainPage = () => {
   const [trivia, setTrivia] = useState({ choices: [] });
-  const [userAnswer, setUserAnswer] = useState([]);
+  const [userAnswer, setUserAnswer] = useState();
   const [count, setCount] = useState(1);
 
   //Call to API data
   useEffect(() => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   }, []);
+
+  console.log(trivia);
 
   const saveUserAnswer = (e) => {
     const selectedItem = parseInt(e.currentTarget.id);
@@ -51,8 +53,8 @@ const MainPage = () => {
         handleSkip={handleSkip}
         saveUserAnswer={saveUserAnswer}
         handleConfirmAnswer={handleConfirmAnswer}
+        count={count}
       />
-      <FinalGame />
     </>
   );
 };

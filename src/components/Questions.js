@@ -1,3 +1,5 @@
+import FinalGame from "./FinalGame";
+
 const Questions = (props) => {
   console.log(props);
 
@@ -18,6 +20,12 @@ const Questions = (props) => {
       </div>
     );
   });
+
+  const handleEndOfGame = () => {
+    if (props.count === 10) {
+      return <FinalGame />;
+    }
+  };
 
   return (
     <>
@@ -41,6 +49,7 @@ const Questions = (props) => {
           Skip
         </button>
       </div>
+      <div className="playAgain">{handleEndOfGame()}</div>
     </>
   );
 };
