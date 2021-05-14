@@ -14,15 +14,15 @@ const MainPage = () => {
   useEffect(() => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   }, []);
-
+  console.log(trivia.text);
+  console.log(trivia.number);
   const saveUserAnswer = (e) => {
     const selectedItem = parseInt(e.currentTarget.id);
     setUserAnswer(selectedItem);
   };
-  console.log(userAnswer);
 
   const handleCount = () => {
-    if (count === 10) {
+    if (count > 10) {
       setCount(1);
     } else {
       setCount(count + 1);
@@ -58,6 +58,7 @@ const MainPage = () => {
   };
 
   console.log(answersList);
+
   return (
     <>
       <h1>Trividabo</h1>
@@ -68,6 +69,7 @@ const MainPage = () => {
         correctAnswer={trivia.number}
         handleSkip={handleSkip}
         saveUserAnswer={saveUserAnswer}
+        userAnswer={userAnswer}
         handleConfirmAnswer={handleConfirmAnswer}
         count={count}
         answersList={answersList}

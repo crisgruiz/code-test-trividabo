@@ -22,9 +22,29 @@ const Questions = (props) => {
   });
 
   const handleEndOfGame = () => {
-    if (props.count > 10) {
+    if (props.count === 10) {
       return <FinalGame handleReset={props.handleReset} />;
     }
+  };
+
+  const handleResults = () => {
+    return props.answersList.map((answers) => {
+      if (answers.number == props.userAnswer) {
+        return (
+          <>
+            <p>{answers.text}</p>
+            <p>{answers.number}</p>
+          </>
+        );
+      } else {
+        return (
+          <>
+            <p>{answers.text}</p>
+            <p>Right answer was {answers.number}</p>
+          </>
+        );
+      }
+    });
   };
 
   return (
@@ -49,7 +69,7 @@ const Questions = (props) => {
           Skip
         </button>
       </div>
-      <div></div>
+      <div className="resultList">{handleResults()}</div>
       <div className="playAgain">{handleEndOfGame()}</div>
     </>
   );
