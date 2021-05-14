@@ -1,18 +1,18 @@
 import FinalGame from "./FinalGame";
+import "../styleSheets/layout/_questions.scss";
 
 const Questions = (props) => {
-  console.log(props);
-
-  const answerList = props.answers.map((answer, id) => {
+  const generateAnswerList = props.answers.map((answer, id) => {
     return (
-      <div key={id}>
-        <label>
+      <div key={id} className="answersList">
+        <label className="answersList__answer">
+          <span className="answersList__btn"></span>
           <input
             type="radio"
             id={answer}
             value={answer}
             name="options"
-            className="respondList__answer"
+            className="answersList__radio"
             onClick={props.saveUserAnswer}
           ></input>
           {answer}
@@ -22,8 +22,8 @@ const Questions = (props) => {
   });
 
   const handleEndOfGame = () => {
-    if (props.count === 10) {
-      return <FinalGame />;
+    if (props.count > 10) {
+      return <FinalGame handleReset={props.handleReset} />;
     }
   };
 
@@ -31,7 +31,7 @@ const Questions = (props) => {
     <>
       <div className="question">
         <h3 className="question__text">{props.question}</h3>
-        {<form className="respondList">{answerList}</form>}
+        {<form className="respondList">{generateAnswerList}</form>}
       </div>
       <div className="buttons">
         <button
@@ -49,6 +49,7 @@ const Questions = (props) => {
           Skip
         </button>
       </div>
+      <div></div>
       <div className="playAgain">{handleEndOfGame()}</div>
     </>
   );

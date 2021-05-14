@@ -54,7 +54,6 @@ const generateQuestionWithAnswers = () => {
       text: generateQuestion(data.text),
       number: data.number,
       choices: generateAnswers(data.number),
-      id: 0,
     };
     return trivia;
   });
