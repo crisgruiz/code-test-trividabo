@@ -45,6 +45,8 @@ const MainPage = () => {
 
   const handleConfirmAnswer = () => {
     if (userAnswer) {
+      trivia.userAnswer = userAnswer;
+      trivia.isCorrect = checkAnswer(trivia);
       handleNextQuestion();
     }
   };
@@ -53,17 +55,21 @@ const MainPage = () => {
     handleNextQuestion();
   };
 
+  const checkAnswer = (answerTrivia) => {
+    return answerTrivia.userAnswer === answerTrivia.number;
+  };
+
   const handleResults = () => {
-    return answersList.map((answers, id) => {
-      if (answers.number == userAnswer) {
+    return answersList.map((answer, id) => {
+      if (answer.isCorrect) {
         return (
           <>
             <div className="line"></div>
             <div key={id}>
-              <p>{answers.text}</p>
+              <p>{answer.text}</p>
               <div className="answer">
                 <i className="fas fa-check-circle answer__icon"></i>
-                <p className="answer__number">{answers.number}</p>
+                <p className="answer__number">{answer.number}</p>
               </div>
             </div>
           </>
@@ -73,12 +79,12 @@ const MainPage = () => {
           <>
             <div className="line"></div>
             <div key={id}>
-              <p>{answers.text}</p>
+              <p>{answer.text}</p>
               <div className="answer">
                 <i className="fas fa-times-circle answer__icon"></i>
                 <p className="answer__skip">Skipped</p>
                 <p className="answer__number">
-                  - Right answer was {answers.number}
+                  - Right answer was {answer.number}
                 </p>
               </div>
             </div>
