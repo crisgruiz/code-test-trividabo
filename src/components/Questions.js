@@ -42,6 +42,13 @@ const Questions = (props) => {
         >
           Skip
         </button>
+        <button
+          className="buttons__new"
+          type="button"
+          onClick={props.handleReset}
+        >
+          New game
+        </button>
       </div>
       <div className="resultList">{props.handleResults()}</div>
     </>

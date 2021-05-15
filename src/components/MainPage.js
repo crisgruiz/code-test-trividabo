@@ -44,6 +44,7 @@ const MainPage = () => {
     setUserAnswer();
     setCount(1);
     setAnswersList([]);
+    generateQuestionWithAnswers().then((data) => setTrivia(data));
   };
 
   const handleAnswersList = () => {
@@ -127,6 +128,7 @@ const MainPage = () => {
           handleResults={handleResults}
           handleConfirmAnswer={handleConfirmAnswer}
           handleSkip={handleSkip}
+          handleReset={handleReset}
         />
       );
     }

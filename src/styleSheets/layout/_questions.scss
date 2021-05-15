@@ -39,27 +39,39 @@
   margin: 50px 0;
   padding: 0 150px;
   &__confirm {
-    width: 250px;
-    height: 50px;
-    background-color: $confirmBtn;
-    color: $btnText;
-    text-decoration: none;
-    text-transform: uppercase;
     font-size: 20px;
     font-weight: 600;
     border-radius: 5px;
+    background-color: $confirmBtn;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: $btnWidth;
+    height: $btnHeight;
+    color: $btnText;
     margin-right: 50px;
   }
   &__skip {
-    width: 250px;
-    height: 50px;
-    background-color: $skipBtn;
-    color: $btnText;
-    text-decoration: none;
-    text-transform: uppercase;
     font-size: 20px;
     font-weight: 600;
     border-radius: 5px;
+    background-color: $skipBtn;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: $btnWidth;
+    height: $btnHeight;
+    color: $btnText;
+    margin-right: 50px;
+  }
+  &__new {
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: $confirmBtn;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: $btnWidth;
+    height: $btnHeight;
+    color: $btnText;
   }
 }
 .line {
