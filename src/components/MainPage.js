@@ -1,19 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
+import localStorage from "../services/localStorage";
 import Questions from "./Questions";
 import FinalGame from "./FinalGame";
 
 const MainPage = () => {
-  const [trivia, setTrivia] = useState({ choices: [] });
+  const [trivia, setTrivia] = useState(
+    localStorage.get("trivia", { choices: [] })
+  );
   const [userAnswer, setUserAnswer] = useState();
-  const [count, setCount] = useState(1);
-  const [answersList, setAnswersList] = useState([]);
+  const [count, setCount] = useState(localStorage.get("count", 1));
+  const [answersList, setAnswersList] = useState(
+    localStorage.get("answersList", [])
+  );
 
   //Call to API data
   useEffect(() => {
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   }, []);
+
+  // local storage
+  useEffect(() => {
+    localStorage.set("trivia", trivia);
+    localStorage.set("userAnswer", userAnswer);
+    localStorage.set("count", count);
+    localStorage.set("answersList", answersList);
+  }, [trivia, userAnswer, count, answersList]);
 
   console.log(trivia.text);
   console.log(trivia.number);
