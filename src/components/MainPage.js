@@ -22,11 +22,12 @@ const MainPage = () => {
     }
   }, []);
 
+  //LocalStorage
+
   useEffect(() => {
     localStorage.set("trivia", trivia);
   }, [trivia]);
 
-  // local storage
   useEffect(() => {
     localStorage.set("count", count);
     localStorage.set("answersList", answersList);
