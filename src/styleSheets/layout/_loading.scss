@@ -1,0 +1,12 @@
+@import "../core/core";
+
+.loading {
+  width: 250px;
+  margin-top: 150px;
+  font-size: 20px;
+  text-align: center;
+  @include tablet() {
+    width: 600px;
+    font-size: 30px;
+  }
+}
