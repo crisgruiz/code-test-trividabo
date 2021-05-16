@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import { getJSON, setJSON } from "../services/localStorage";
+import NoRespond from "./NoRespond";
 import Questions from "./Questions";
 import Results from "./Results";
 import FinalGame from "./FinalGame";
@@ -78,35 +79,38 @@ const MainPage = () => {
   };
 
   const printHTML = () => {
-    console.log(trivia);
-    if (answersList.length === 10) {
-      return (
-        <>
-          <Results answersList={answersList} />
-          <FinalGame
-            answersList={answersList}
-            handleReset={handleReset}
-            // handleResults={handleResults}
-          />
-        </>
-      );
+    if (!trivia.text) {
+      return <NoRespond />;
     } else {
-      return (
-        <>
-          <Questions
-            question={trivia.text}
-            answers={trivia.choices}
-            handleNextQuestion={handleNextQuestion}
-            saveUserAnswer={saveUserAnswer}
-            count={count}
-            handleConfirmAnswer={handleConfirmAnswer}
-            handleSkip={handleSkip}
-            handleReset={handleReset}
-            // handleResults={handleResults}
-          />
-          <Results answersList={answersList} />
-        </>
-      );
+      if (answersList.length === 10) {
+        return (
+          <>
+            <Results answersList={answersList} />
+            <FinalGame
+              answersList={answersList}
+              handleReset={handleReset}
+              // handleResults={handleResults}
+            />
+          </>
+        );
+      } else {
+        return (
+          <>
+            <Questions
+              question={trivia.text}
+              answers={trivia.choices}
+              handleNextQuestion={handleNextQuestion}
+              saveUserAnswer={saveUserAnswer}
+              count={count}
+              handleConfirmAnswer={handleConfirmAnswer}
+              handleSkip={handleSkip}
+              handleReset={handleReset}
+              // handleResults={handleResults}
+            />
+            <Results answersList={answersList} />
+          </>
+        );
+      }
     }
   };
 
