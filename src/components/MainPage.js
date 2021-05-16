@@ -16,7 +16,7 @@ const MainPage = () => {
 
   //Load the first time
   useEffect(() => {
-    if (getJSON("trivia")) {
+    if (getJSON("trivia", {}).text) {
       setTrivia(getJSON("trivia"));
     } else {
       generateQuestionWithAnswers().then((data) => setTrivia(data));
