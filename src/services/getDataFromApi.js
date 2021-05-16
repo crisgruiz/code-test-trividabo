@@ -4,7 +4,13 @@ const randomNum = () => {
 
 const getDataFromApi = (a) => {
   return fetch(`http://numbersapi.com/${a || randomNum()}/trivia?json`).then(
-    (response) => response.json()
+    (response) => {
+      if (!response.ok) {
+        throw Error(response.status);
+      } else {
+        return response.json();
+      }
+    }
   );
 };
 
@@ -37,14 +43,20 @@ const generateQuestion = (question) => {
 };
 
 const generateQuestionWithAnswers = () => {
-  return getDataFromApi().then((data) => {
-    const trivia = {
-      text: generateQuestion(data.text),
-      number: data.number,
-      choices: generateAnswers(data.number),
-    };
-    return trivia;
-  });
+  return getDataFromApi()
+    .then((data) => {
+      const trivia = {
+        text: generateQuestion(data.text),
+        number: data.number,
+        choices: generateAnswers(data.number),
+      };
+      return trivia;
+    })
+    .catch(() => {
+      return {
+        error: "fetch error",
+      };
+    });
 };
 
 export {

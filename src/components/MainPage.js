@@ -3,6 +3,7 @@ import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import { getJSON, setJSON } from "../services/localStorage";
 import NoRespond from "./NoRespond";
+import Loading from "./Loading";
 import Questions from "./Questions";
 import Results from "./Results";
 import FinalGame from "./FinalGame";
@@ -13,6 +14,7 @@ const MainPage = () => {
   const [count, setCount] = useState(getJSON("count", 1));
   const [answersList, setAnswersList] = useState(getJSON("answersList", []));
 
+  //Load the first time
   useEffect(() => {
     if (getJSON("trivia")) {
       setTrivia(getJSON("trivia"));
@@ -76,17 +78,16 @@ const MainPage = () => {
   };
 
   const printHTML = () => {
-    if (!trivia.text) {
+    if (!trivia.text && !trivia.error) {
+      return <Loading />;
+    } else if (trivia.error) {
       return <NoRespond />;
     } else {
       if (answersList.length === 10) {
         return (
           <>
             <Results answersList={answersList} />
-            <FinalGame
-              answersList={answersList}
-              handleReset={handleReset}
-            />
+            <FinalGame answersList={answersList} handleReset={handleReset} />
           </>
         );
       } else {
