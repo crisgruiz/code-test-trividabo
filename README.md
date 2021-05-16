@@ -17,11 +17,27 @@ Las preguntas se generan a través de la API http://numbersapi.com/.
 
 ## Acceder a la aplicación web
 
+Por tanto, para poder abrir la aplicación en el navegador, es necesario clonar el repositorio del proyecto.
+
+Después de clonarlo necesitas ejecutar:
+
+```
+npm install
+```
+
+Una ver terminada la instalación, en el directorio del proyecto, ejecuta:
+
+```
+npm start
+```
+
+Abre http://localhost:3000 para verla en el navegador.
+
 ## Tecnologías
 
 - HTML5
 - Maquetación usando SASS
-- React como framework JS
+- React como framework JS (Create React App)
 - Testing con Jest
 - Github (control de versiones)
 
