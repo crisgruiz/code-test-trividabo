@@ -3,6 +3,10 @@
 .question {
   @include normal-text() {
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: 15px;
   @include tablet() {
     font-size: 18px;
@@ -18,37 +22,14 @@
 }
 
 .respondList {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   align-items: center;
   justify-content: center;
-}
-
-.answersList {
-  @include normal-text() {
-  }
-  font-size: 15px;
-  margin-right: 15px;
+  width: 300px;
   @include tablet() {
-    font-size: 20px;
-  }
-  &__answer {
-    display: flex;
-    flex-direction: row;
-  }
-  &__radio {
-    display: none;
-  }
-  &__btn {
-    height: 18px;
-    width: 18px;
-    background-color: $optionsBtn;
-    border-radius: 50%;
-    margin: 0 10px 15px 0;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 }
 

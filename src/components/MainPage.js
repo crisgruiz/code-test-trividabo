@@ -3,6 +3,7 @@ import "../styleSheets/layout/_mainPage.scss";
 import { generateQuestionWithAnswers } from "../services/getDataFromApi";
 import { getJSON, setJSON } from "../services/localStorage";
 import Questions from "./Questions";
+import Results from "./Results";
 import FinalGame from "./FinalGame";
 
 const MainPage = () => {
@@ -76,63 +77,34 @@ const MainPage = () => {
     return answerTrivia.userAnswer === answerTrivia.number;
   };
 
-  const handleResults = () => {
-    return answersList.map((answer, id) => {
-      if (answer.isCorrect) {
-        return (
-          <div key={id} className="answerList">
-            <div className="answerList__line"></div>
-            <div className="answerList__container">
-              <p>{answer.text}</p>
-              <div className="answerList__answer">
-                <i className="fas fa-check-circle answerList__answer--icon"></i>
-                <p className="answerList__answer--number">{answer.number}</p>
-              </div>
-            </div>
-          </div>
-        );
-      } else {
-        return (
-          <div key={id} className="answerList">
-            <div className="answerList__line"></div>
-            <div className="answerList__container">
-              <p>{answer.text}</p>
-              <div className="answerList__answer">
-                <i className="fas fa-times-circle answerList__answer--icon"></i>
-                <p className="answerList__answer--skip">Skipped</p>
-                <p className="answerList__answer--number">
-                  - Right answer was {answer.number}
-                </p>
-              </div>
-            </div>
-          </div>
-        );
-      }
-    });
-  };
-
-  const showThings = () => {
+  const printHTML = () => {
     if (answersList.length === 10) {
       return (
-        <FinalGame
-          answersList={answersList}
-          handleReset={handleReset}
-          handleResults={handleResults}
-        />
+        <>
+          <Results answersList={answersList} />
+          <FinalGame
+            answersList={answersList}
+            handleReset={handleReset}
+            // handleResults={handleResults}
+          />
+        </>
       );
     } else {
       return (
-        <Questions
-          question={trivia.text}
-          answers={trivia.choices}
-          handleNextQuestion={handleNextQuestion}
-          saveUserAnswer={saveUserAnswer}
-          count={count}
-          handleConfirmAnswer={handleConfirmAnswer}
-          handleSkip={handleSkip}
-          handleReset={handleReset}
-          handleResults={handleResults}
-        />
+        <>
+          <Questions
+            question={trivia.text}
+            answers={trivia.choices}
+            handleNextQuestion={handleNextQuestion}
+            saveUserAnswer={saveUserAnswer}
+            count={count}
+            handleConfirmAnswer={handleConfirmAnswer}
+            handleSkip={handleSkip}
+            handleReset={handleReset}
+            // handleResults={handleResults}
+          />
+          <Results answersList={answersList} />
+        </>
       );
     }
   };
@@ -143,7 +115,7 @@ const MainPage = () => {
     <>
       <main>
         <h1 className="title">Trividabo</h1>
-        <div className="mainPage">{showThings()}</div>
+        <div className="mainPage">{printHTML()}</div>
       </main>
     </>
   );

@@ -3,7 +3,7 @@ const randomNum = () => {
 };
 
 const getDataFromApi = (a) => {
-  return fetch(`https://numbersapi.com/${a || randomNum()}/trivia?json`).then(
+  return fetch(`http://numbersapi.com/${a || randomNum()}/trivia?json`).then(
     (response) => response.json()
   );
 };

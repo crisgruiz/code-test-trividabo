@@ -37,7 +37,6 @@ const Questions = (props) => {
           New game
         </button>
       </div>
-      <div className="resultList">{props.handleResults()}</div>
     </>
   );
 };

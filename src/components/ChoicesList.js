@@ -1,3 +1,5 @@
+import "../styleSheets/layout/_choiceList.scss";
+
 const ChoicesList = (props) => {
   return props.choices.map((choice, id) => {
     return (
