@@ -3,7 +3,7 @@ import "../styleSheets/layout/_questions.scss";
 const Questions = (props) => {
   const generateAnswerList = props.answers.map((answer, id) => {
     return (
-      <div key={id} className="answersList">
+      <div key={id} id={id} className="answersList">
         <label className="answersList__answer">
           <span className="answersList__btn"></span>
           <input

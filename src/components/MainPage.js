@@ -82,32 +82,32 @@ const MainPage = () => {
     return answersList.map((answer, id) => {
       if (answer.isCorrect) {
         return (
-          <>
-            <div className="line"></div>
-            <div key={id}>
+          <div key={id} className="answerList">
+            <div className="answerList__line"></div>
+            <div className="answerList__container">
               <p>{answer.text}</p>
-              <div className="answer">
-                <i className="fas fa-check-circle answer__icon"></i>
-                <p className="answer__number">{answer.number}</p>
+              <div className="answerList__answer">
+                <i className="fas fa-check-circle answerList__answer--icon"></i>
+                <p className="answerList__answer--number">{answer.number}</p>
               </div>
             </div>
-          </>
+          </div>
         );
       } else {
         return (
-          <>
-            <div className="line"></div>
-            <div key={id}>
+          <div key={id} className="answerList">
+            <div className="answerList__line"></div>
+            <div className="answerList__container">
               <p>{answer.text}</p>
-              <div className="answer">
-                <i className="fas fa-times-circle answer__icon"></i>
-                <p className="answer__skip">Skipped</p>
-                <p className="answer__number">
+              <div className="answerList__answer">
+                <i className="fas fa-times-circle answerList__answer--icon"></i>
+                <p className="answerList__answer--skip">Skipped</p>
+                <p className="answerList__answer--number">
                   - Right answer was {answer.number}
                 </p>
               </div>
             </div>
-          </>
+          </div>
         );
       }
     });
