@@ -130,10 +130,10 @@ const MainPage = () => {
           handleNextQuestion={handleNextQuestion}
           saveUserAnswer={saveUserAnswer}
           count={count}
-          handleResults={handleResults}
           handleConfirmAnswer={handleConfirmAnswer}
           handleSkip={handleSkip}
           handleReset={handleReset}
+          handleResults={handleResults}
         />
       );
     }
