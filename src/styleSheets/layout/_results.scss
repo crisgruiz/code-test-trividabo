@@ -1,0 +1,54 @@
+@import "../core/core";
+
+.answerList {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include tablet() {
+    width: 100%;
+  }
+  &__line {
+    height: 1px;
+    width: 250px;
+    background-color: $lineColor;
+    margin-bottom: 25px;
+    @include tablet() {
+      width: 700px;
+    }
+  }
+  &__container {
+    text-align: center;
+    @include tablet() {
+      width: 700px;
+    }
+  }
+  &__question {
+    margin-bottom: 15px;
+  }
+  &__answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    &--correctIcon {
+      color: $correct;
+      margin-right: 10px;
+    }
+    &--wrongIcon {
+      color: $fail;
+      margin-right: 10px;
+    }
+    &--number {
+      color: $correct;
+    }
+    &--skip {
+      color: $fail;
+      margin-right: 10px;
+    }
+    &--text {
+      color: $respondTextColor;
+    }
+  }
+}
