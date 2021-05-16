@@ -8,6 +8,6 @@ const set = (key, data) => {
 };
 
 export default {
-  get: get,
-  set: set,
+  get,
+  set,
 };

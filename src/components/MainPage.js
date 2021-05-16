@@ -15,16 +15,22 @@ const MainPage = () => {
 
   //Call to API data
   useEffect(() => {
-    generateQuestionWithAnswers().then((data) => setTrivia(data));
+    if (localStorage.get("trivia")) {
+      setTrivia(localStorage.get("trivia"));
+    } else {
+      generateQuestionWithAnswers().then((data) => setTrivia(data));
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.set("trivia", trivia);
+  }, [trivia]);
 
   // local storage
   useEffect(() => {
-    localStorage.set("trivia", trivia);
-    localStorage.set("userAnswer", userAnswer);
     localStorage.set("count", count);
     localStorage.set("answersList", answersList);
-  }, [trivia, userAnswer, count, answersList]);
+  }, [count, answersList]);
 
   console.log(trivia.text);
   console.log(trivia.number);
@@ -52,6 +58,7 @@ const MainPage = () => {
   const handleNextQuestion = () => {
     handleAnswersList();
     handleCount();
+    setUserAnswer();
     generateQuestionWithAnswers().then((data) => setTrivia(data));
   };
 
