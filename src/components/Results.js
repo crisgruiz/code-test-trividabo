@@ -23,7 +23,7 @@ const Results = (props) => {
             <p className="answerList__question">{answer.text}</p>
             <div className="answerList__answer">
               <i className="fas fa-times-circle answerList__answer--wrongIcon"></i>
-              <p className="answerList__answer--skip">Skipped</p>
+              <p className="answerList__answer--skip">Fail</p>
               <p className="answerList__answer--text">
                 - Right answer was {answer.number}
               </p>
