@@ -34,7 +34,7 @@ test("Generate question with answers", () => {
   });
 });
 
-test("Given a quaetion return number and qestion", () => {
+test("Given a question return number and qestion", () => {
   const q = generateQuestion("22 is the number of the day I was born.");
   expect(q).toBe("What is the number of the day I was born?");
 });

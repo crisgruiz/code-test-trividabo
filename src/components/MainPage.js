@@ -78,6 +78,7 @@ const MainPage = () => {
   };
 
   const printHTML = () => {
+    console.log(trivia);
     if (answersList.length === 10) {
       return (
         <>
