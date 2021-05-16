@@ -25,7 +25,7 @@ Al desplegar la aplicación, ésta no funciona correctamente ya que al hacer la 
 El motivo es que el dominio generado se carga sobre HTTPS, pero la llamada a la API se hace sobre HTTP (`http://numbersapi.com/`), por lo que la petición se bloquea.
 Para solucionar este tipo de error, se deben eliminar todas las solicitudes de contenido HTTP y sustituirlas por contenido dado a través de HTTPS.
 
-`Para más información sobre el error: [Mixed content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content)`
+Para más información sobre el error: [Mixed content](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content)
 
 Por tanto, para poder abrir la aplicación en el navegador, es necesario clonar el repositorio del proyecto.
 
