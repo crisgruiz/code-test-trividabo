@@ -13,7 +13,6 @@ const MainPage = () => {
   const [count, setCount] = useState(getJSON("count", 1));
   const [answersList, setAnswersList] = useState(getJSON("answersList", []));
 
-  //Call to API data
   useEffect(() => {
     if (getJSON("trivia")) {
       setTrivia(getJSON("trivia"));
@@ -21,8 +20,6 @@ const MainPage = () => {
       generateQuestionWithAnswers().then((data) => setTrivia(data));
     }
   }, []);
-
-  //LocalStorage
 
   useEffect(() => {
     setJSON("trivia", trivia);
@@ -89,7 +86,6 @@ const MainPage = () => {
             <FinalGame
               answersList={answersList}
               handleReset={handleReset}
-              // handleResults={handleResults}
             />
           </>
         );
@@ -105,7 +101,6 @@ const MainPage = () => {
               handleConfirmAnswer={handleConfirmAnswer}
               handleSkip={handleSkip}
               handleReset={handleReset}
-              // handleResults={handleResults}
             />
             <Results answersList={answersList} />
           </>
@@ -113,8 +108,6 @@ const MainPage = () => {
       }
     }
   };
-
-  console.log(answersList);
 
   return (
     <>

@@ -54,4 +54,3 @@ export {
   generateQuestion,
   generateQuestionWithAnswers,
 };
-// export default getDataFromApiFor100NUmbers;

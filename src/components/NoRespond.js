@@ -1,4 +1,5 @@
 import "../styleSheets/layout/_noRespond.scss";
+
 const NoRespond = () => {
   return (
     <p className="noRespond">
