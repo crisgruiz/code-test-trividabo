@@ -3,7 +3,7 @@ const randomNum = () => {
 };
 
 const getDataFromApi = (a) => {
-  return fetch(`http://numbersapi.com/${a || randomNum()}/trivia?json`).then(
+  return fetch(`https://numbersapi.com/${a || randomNum()}/trivia?json`).then(
     (response) => response.json()
   );
 };
@@ -13,18 +13,6 @@ for (let i = 0; i < 10; i++) {
   let randomNumber = Math.floor(Math.random() * 100);
   questionsArr.push(randomNumber);
 }
-
-// const getDataFromApi10Numbers = () => {
-//   return fetch(
-//     `http://numbersapi.com/${questionsArr[0]},${questionsArr[1]},${questionsArr[2]},${questionsArr[3]},${questionsArr[4]},${questionsArr[5]},${questionsArr[6]},${questionsArr[7]},${questionsArr[8]},${questionsArr[9]}/trivia?json`
-//   ).then((response) => response.json());
-// };
-
-// const getDataFromApiFor100NUmbers = () => {
-//   return fetch(`http://numbersapi.com/1..100}/trivia?json`).then((response) =>
-//     response.json()
-//   );
-// };
 
 const generateAnswers = (correctOption) => {
   const arr = [correctOption];
