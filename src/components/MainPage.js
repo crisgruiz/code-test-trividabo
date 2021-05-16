@@ -33,7 +33,6 @@ const MainPage = () => {
     localStorage.set("answersList", answersList);
   }, [count, answersList]);
 
-  console.log(trivia.text);
   console.log(trivia.number);
 
   const saveUserAnswer = (e) => {

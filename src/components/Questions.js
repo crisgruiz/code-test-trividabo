@@ -1,31 +1,18 @@
 import "../styleSheets/layout/_questions.scss";
+import ChoicesList from "./ChoicesList";
 
 const Questions = (props) => {
-  const generateAnswerList = props.answers.map((answer, id) => {
-    return (
-      <div key={id} id={id} className="answersList">
-        <label className="answersList__answer">
-          <span className="answersList__btn"></span>
-          <input
-            type="radio"
-            id={answer}
-            value={answer}
-            name="options"
-            className="answersList__radio"
-            onClick={props.saveUserAnswer}
-          ></input>
-          {answer}
-        </label>
-      </div>
-    );
-  });
-
   return (
     <>
       <p className="mainPage__count">Question {props.count} of 10</p>
       <div className="question">
         <p className="question__text">{props.question}</p>
-        <form className="respondList">{generateAnswerList}</form>
+        <form className="respondList">
+          <ChoicesList
+            saveUserAnswer={props.saveUserAnswer}
+            choices={props.answers}
+          />
+        </form>
       </div>
       <div className="buttons">
         <button

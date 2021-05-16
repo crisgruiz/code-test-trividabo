@@ -51,3 +51,12 @@ main {
     }
   }
 }
+
+.answerList {
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $lineColor;
+    margin-bottom: 25px;
+  }
+}
