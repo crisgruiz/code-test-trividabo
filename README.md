@@ -1,5 +1,7 @@
 # Trividabo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8d4ab8d3-a466-4464-88a1-210f5d76b68b/deploy-status)](https://app.netlify.com/sites/trividabo-2dfd25/deploys)
+
 Trividabo Number es una aplicación web en la que el usuario debe responder a 10 preguntas relacionadas con números aleatorios.
 
 ## ¿Cómo funciona?
