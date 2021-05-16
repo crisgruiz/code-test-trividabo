@@ -6,9 +6,7 @@ import Questions from "./Questions";
 import FinalGame from "./FinalGame";
 
 const MainPage = () => {
-  const [trivia, setTrivia] = useState(
-    localStorage.get("trivia", { choices: [] })
-  );
+  const [trivia, setTrivia] = useState({ choices: [] });
   const [userAnswer, setUserAnswer] = useState();
   const [count, setCount] = useState(localStorage.get("count", 1));
   const [answersList, setAnswersList] = useState(
