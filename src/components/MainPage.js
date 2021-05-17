@@ -43,13 +43,6 @@ const MainPage = () => {
     setCount(count + 1);
   };
 
-  const handleReset = () => {
-    setUserAnswer();
-    setCount(1);
-    setAnswersList([]);
-    generateQuestionWithAnswers().then((data) => setTrivia(data));
-  };
-
   const handleAnswersList = () => {
     setAnswersList(answersList.concat([trivia]));
   };
@@ -59,6 +52,10 @@ const MainPage = () => {
     handleCount();
     setUserAnswer();
     generateQuestionWithAnswers().then((data) => setTrivia(data));
+  };
+
+  const checkAnswer = (answerTrivia) => {
+    return answerTrivia.userAnswer === answerTrivia.number;
   };
 
   const handleConfirmAnswer = () => {
@@ -73,8 +70,12 @@ const MainPage = () => {
     handleNextQuestion();
   };
 
-  const checkAnswer = (answerTrivia) => {
-    return answerTrivia.userAnswer === answerTrivia.number;
+  
+  const handleReset = () => {
+    setUserAnswer();
+    setCount(1);
+    setAnswersList([]);
+    generateQuestionWithAnswers().then((data) => setTrivia(data));
   };
 
   const printHTML = () => {
