@@ -71,6 +71,6 @@ Abre http://localhost:3000 para verla en el navegador.
 
 - Añadir un contador que limite a 30 segundos el tiempo disponible para responder, con su correspondiente barra de progreso.
 - Utilizar Redux para gestionar el estado de la aplicación.
-- Aplicar style-components para aportar los estilos a la aplicación web.
+- Aplicar style-components en lugar de SASS para aportar los estilos a la aplicación web.
 - Diferenciar el resultado dependiendo de si el usuario ha contestado erroneamente a la pregunta o si la ha omitido.
 - Realizar un mayor número de test, para que todas las capas cuenten con al menos un test.
